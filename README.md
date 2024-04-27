@@ -18,4 +18,12 @@ I will try to prioritize _photorealism_, _steerability_(the ability to control i
 ESRGAN is a combination of generative adversarial networks (GANs) and deep convolutional neural networks (CNNs) and it produces highly realistic high-resolution images from low-resolution images.  ESRGAN also has Residual in Residual Dense Block(RRDB) which combines multi-level residual network and dense connection without Batch Normalization.
 This model was used to upscale the 512x512 images to desired 2048x2048 size.
 
+## Experimentation:
+I explored all the above models with the combination of the samplers. I found that across all the models there wasn’t much improvement after 35 inference steps and the guidance scale of 8-9 was giving the desired results.
+DPM2 Karras and Euler Ancestral gave the best results for RealVision as this was recommended by the creator of the model. These ancestrol samplers since do not converge well which is why they gave different results on changing steps by factor of even 2
+DDIM and DDPM were one of those which gave the best results across all models. 
+All the samplers gave the results in the average of 20 seconds on average on T4 GPU on colab but the DDPM was the fastest among all of the samplers used.
+The choice of the upscaller could be changed as Real ESRGAN gave problems like the rebuilt image is overly smooth and suffers from substantial texture information loss.
+
+
 
